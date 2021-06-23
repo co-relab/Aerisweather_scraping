@@ -41,35 +41,35 @@ def timestamp_computing(timestamp, delay, sign):
     return timestamp
 
 
-#creates the different "failed" and "warning" files, if they aren't already created
+#creates the different "failed_accesses" and "warning_accesses" files, if they aren't already created
 def files_init(year):
 
     try:
-        with open("specified_date_failed.csv", "r") as opening:
+        with open("specified_date_failed_accesses.csv", "r") as opening:
             pass
     except:
-        with open("specified_date_failed.csv", "w") as opening:
+        with open("specified_date_failed_accesses.csv", "w") as opening:
             opening.write("id;location;geo_coordinates;delay;timestamp;fields;error_code;error_description")
 
     try:
-        with open("specified_date_warning.csv", "r") as opening:
+        with open("specified_date_warning_accesses.csv", "r") as opening:
             pass
     except:
-        with open("specified_date_warning.csv", "w") as opening:
+        with open("specified_date_warning_accesses.csv", "w") as opening:
             opening.write("id;location;geo_coordinates;delay;timestamp;fields;error_code;error_description")
 
     try:
-        with open("averages_{}_failed.csv".format(year), "r") as opening:
+        with open("averages_{}_failed_accesses.csv".format(year), "r") as opening:
             pass
     except:
-        with open("averages_{}_failed.csv".format(year), "w") as opening:
+        with open("averages_{}_failed_accesses.csv".format(year), "w") as opening:
             opening.write("country;location;geo_coordinates;t1;t2;fields;error_code;error_description")
 
     try:
-        with open("averages_{}_warning.csv".format(year), "r") as opening:
+        with open("averages_{}_warning_accesses.csv".format(year), "r") as opening:
             pass
     except:
-        with open("averages_{}_warning.csv".format(year), "w") as opening:
+        with open("averages_{}_warning_accesses.csv".format(year), "w") as opening:
             opening.write("country;location;geo_coordinates;t1;t2;fields;error_code;error_description")
 
 

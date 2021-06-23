@@ -86,7 +86,7 @@ class aerisweather_instance_year(Thread):
                         data_json = json.loads(r.content)
                     except:
                         with lock_failed:
-                            with open("averages_{}_failed.csv".format(YEAR), "a") as opening:
+                            with open("averages_{}_failed_accesses.csv".format(YEAR), "a") as opening:
                                 opening.write("\n{};{};{};{};{};{};;".format(location, location, locations[location], t1, t2, fields))
                         continue
                         
@@ -97,13 +97,13 @@ class aerisweather_instance_year(Thread):
                             code = data_json["error"]["code"]
                             description = data_json["error"]["description"]
                             with lock_warning:
-                                with open("averages_{}_warning.csv".format(YEAR), "a") as opening:
+                                with open("averages_{}_warning_accesses.csv".format(YEAR), "a") as opening:
                                     opening.write("\n{};{};{};{};{};{};{};{}".format(location, location, locations[location], t1, t2, fields, code, description))
                     else:
                         code = data_json["error"]["code"]
                         description = data_json["error"]["description"]
                         with lock_failed:
-                            with open("averages_{}_failed.csv".format(YEAR), "a") as opening:
+                            with open("averages_{}_failed_accesses.csv".format(YEAR), "a") as opening:
                                 opening.write("\n{};{};{};{};{};{};{};{}".format(location, location, locations[location], t1, t2, fields, code, description))
                         if code == "maxhits_daily":
                             #the script is paused till midnight UTC (2AM France time for the computer on which the script ran)
@@ -166,7 +166,7 @@ class aerisweather_instance_timestamp(Thread):
                         data_json = json.loads(r.content)
                     except:
                         with lock_failed:
-                            with open("specified_date_failed.csv", "a") as opening:
+                            with open("specified_date_failed_accesses.csv", "a") as opening:
                                 opening.write("\n{};{};{};{};{};{};;".format(id, location, locations[location], timestamp, timestamps[timestamp], fields))
                         continue
                         
@@ -177,13 +177,13 @@ class aerisweather_instance_timestamp(Thread):
                             code = data_json["error"]["code"]
                             description = data_json["error"]["description"]
                             with lock_warning:
-                                with open("specified_date_warning.csv", "a") as opening:
+                                with open("specified_date_warning_accesses.csv", "a") as opening:
                                     opening.write("\n{};{};{};{};{};{};{};{}".format(id, location, locations[location], timestamp, timestamps[timestamp], fields, code, description))
                     else:
                         code = data_json["error"]["code"]
                         description = data_json["error"]["description"]
                         with lock_failed:
-                            with open("specified_date_failed.csv", "a") as opening:
+                            with open("specified_date_failed_accesses.csv", "a") as opening:
                                 opening.write("\n{};{};{};{};{};{};{};{}".format(id, location, locations[location], timestamp, timestamps[timestamp], fields, code, description))
                         if code == "maxhits_daily":
                             #the script is paused till midnight UTC
