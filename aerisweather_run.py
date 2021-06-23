@@ -11,6 +11,11 @@ from aerisweather_keys import *
 
 #this script allows you to collect climate data using the AerisWeather API
 
+try:
+    os.makedirs("results")
+except:
+    pass
+
 if UTC_TIMEZONE <= 0:
     UTC_TIMEZONE = 0
 
